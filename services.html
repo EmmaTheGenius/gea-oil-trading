@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GEA OIL TRADING DMCC - Services & Products</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .master-canvas {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      position: relative;
+      background-color: #000;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    }
+
+    section {
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* HEADER & HAMBURGER MENU */
+    .site-header {
+      width: 100%;
+      background-image: url('images/PAGE 2/page 2 header background.png');
+      background-size: cover;
+      background-position: center;
+      padding: 15px 4%;
+      position: relative;
+      z-index: 100;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .header-logo-text {
+      height: 82px;
+      width: auto;
+      display: block;
+    }
+
+    .desktop-nav a {
+      margin-left: 18px;
+      text-decoration: none;
+      color: #000000;
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: 0.2px;
+      transition: opacity 0.3s ease;
+    }
+
+    .desktop-nav a:hover {
+      opacity: 0.7;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 22px;
+      height: 16px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 101;
+      padding: 0;
+    }
+
+    .hamburger span {
+      width: 100%;
+      height: 2px;
+      background-color: #000;
+      border-radius: 1px;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-nav-drawer {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #ffffff;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      flex-direction: column;
+      padding: 15px 0;
+      text-align: center;
+      z-index: 99;
+    }
+
+    .mobile-nav-drawer.active {
+      display: flex;
+    }
+
+    .mobile-nav-drawer a {
+      padding: 12px 0;
+      color: #000;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .hero-section {
+      width: 100%;
+      background-image: url('images/PAGE 2/GEA OIL hero background 1.png');
+      background-size: cover;
+      background-position: center;
+      padding: 40px 0 0 0;
+      margin: 0;
+    }
+
+    .hero-text-wrapper {
+      width: 90%;
+      margin: 0 auto 25px auto;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .hero-text-1 {
+      width: 44%;
+      max-width: 580px;
+      height: auto;
+      margin-bottom: 28px;
+      display: block;
+    }
+
+    .hero-text-2 {
+      width: 78%;
+      max-width: 980px;
+      height: auto;
+      display: block;
+    }
+
+    .hero-black-box {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .products-section {
+      width: 100%;
+      background-color: #000000;
+      padding: 60px 0;
+      margin: 0;
+    }
+
+    .products-container {
+      width: 90%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .prod-title-img {
+      width: 25%;
+      max-width: 320px;
+      height: auto;
+      display: block;
+      margin-bottom: 25px;
+    }
+
+    .prod-yellow-banner {
+      width: 58%;
+      max-width: 720px;
+      height: auto;
+      display: block;
+      margin-bottom: 40px;
+    }
+
+    .products-grid {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .products-grid img {
+      width: 23%;
+      height: auto;
+      display: block;
+    }
+
+    .why-choose-section {
+      width: 100%;
+      background-image: url('images/PAGE 2/GEA OIL why choose us background.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 45px 0;
+      margin: 0;
+    }
+
+    .why-choose-container {
+      width: 90%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .why-choose-left {
+      width: 44%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .why-choose-left .card-box-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .why-choose-left .card-text-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 88%;
+      height: 88%;
+      object-fit: contain;
+      pointer-events: none;
+    }
+
+    .why-choose-right {
+      width: 52%;
+      position: relative;
+      display: inline-block;
+    }
+
+    .why-choose-right img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .learn-more-hotspot {
+      position: absolute;
+      bottom: 0px;
+      right: 17.5%;
+      width: 62%;
+      height: 18%;
+      z-index: 100;
+      cursor: pointer;
+      display: block;
+      background: transparent;
+      border: none;
+      outline: none;
+    }
+
+    .services-section {
+      background: #fff;
+      color: #000;
+      text-align: center;
+      padding: 60px 0;
+    }
+
+    .services-section .container {
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    .services-header .offer-img {
+      max-width: 180px;
+      height: auto;
+      margin: 0 auto 8px;
+      display: block;
+    }
+
+    .services-header .services-title-img {
+      max-width: 310px; 
+      height: auto;
+      margin: 0 auto 35px;
+      display: block;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .service-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* ARE YOU READY SECTION */
+    .ready-section {
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      position: relative;
+    }
+
+    .ready-img {
+      display: block;
+      width: 100%;
+      height: auto;
+      transition: opacity 0.3s ease;
+    }
+
+    .contact-hotspot {
+      position: absolute;
+      top: 75.8%;
+      left: 6.2%;
+      width: 16%;
+      height: 10.2%;
+      z-index: 10;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      outline: none;
+    }
+
+    .whatsapp-hotspot {
+      position: absolute;
+      top: 75.8%;
+      left: 23.1%;
+      width: 17%;
+      height: 10.2%;
+      z-index: 10;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      outline: none;
+    }
+
+    /* FORM OVERLAY BASE */
+    .form-container-overlay {
+      display: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 47%;
+      height: 100%;
+      z-index: 20;
+      background-image: url('images/SEND MESSAGE.png');
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+    }
+
+    .interactive-form {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .form-field {
+      position: absolute;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-size: 15px;
+      color: #333;
+      padding-left: 52px;
+      padding-right: 15px;
+      font-family: Arial, sans-serif;
+    }
+
+    .form-field::placeholder {
+      color: #888888;
+      opacity: 0.65;
+      font-weight: 400;
+    }
+
+    .form-field:-webkit-autofill,
+    .form-field:-webkit-autofill:hover, 
+    .form-field:-webkit-autofill:focus,
+    .form-field:-webkit-autofill:active {
+      -webkit-text-fill-color: #333 !important;
+      -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+      transition: background-color 50000s ease-in-out 0s !important;
+      background-color: transparent !important;
+    }
+
+    .input-name {
+      top: 19.5%;
+      left: 8%;
+      width: 84%;
+      height: 10%;
+    }
+
+    .input-email {
+      top: 33.8%;
+      left: 8%;
+      width: 84%;
+      height: 10%;
+    }
+
+    .input-subject {
+      top: 47.8%;
+      left: 8%;
+      width: 84%;
+      height: 10%;
+    }
+
+    .input-message {
+      top: 63.5%;
+      left: 8%;
+      width: 84%;
+      height: 19%;
+      padding-top: 5px;
+      padding-left: 52px;
+      resize: none;
+    }
+
+    .send-btn-hotspot {
+      position: absolute;
+      top: 88%;
+      left: 18%;
+      width: 64%;
+      height: 9%;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    .footer-section {
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      position: relative;
+    }
+
+    .footer-img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .back-to-top-hotspot {
+      position: absolute;
+      bottom: 10%;
+      right: 14.5%;
+      width: 5%;
+      height: 12%;
+      z-index: 10;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      outline: none;
+    }
+
+    /* COMPREHENSIVE MOBILE RESPONSIVE FIXES */
+    @media (max-width: 768px) {
+      .master-canvas {
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+
+      .desktop-nav {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .header-logo-text {
+        height: 48px;
+      }
+
+      .hero-text-1 {
+        width: 75% !important;
+      }
+
+      .hero-text-2 {
+        width: 95% !important;
+      }
+
+      .prod-title-img {
+        width: 50% !important;
+      }
+
+      .prod-yellow-banner {
+        width: 80% !important;
+      }
+
+      .products-grid {
+        flex-direction: column !important;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .products-grid img {
+        width: 70% !important;
+        margin: 0 auto;
+      }
+
+      .why-choose-container {
+        flex-direction: column !important;
+        gap: 25px;
+      }
+
+      .why-choose-left, 
+      .why-choose-right {
+        width: 90% !important;
+        margin: 0 auto;
+      }
+
+      .learn-more-hotspot {
+        bottom: 0px;
+        right: 15%;
+        width: 70%;
+        height: 16%;
+      }
+
+      .services-header .offer-img {
+        max-width: 120px !important;
+      }
+
+      .services-header .services-title-img {
+        max-width: 220px !important;
+        margin-bottom: 20px !important;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr !important;
+        gap: 25px;
+      }
+
+      .service-card {
+        width: 75% !important;
+        margin: 0 auto;
+      }
+
+      /* UNCROPPED MOBILE BANNER & DYNAMIC FORM ASPECT RATIO */
+      .ready-section {
+        min-height: auto !important;
+      }
+
+      .ready-img {
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        object-fit: contain !important;
+      }
+
+      .form-container-overlay {
+        width: 100% !important;
+        height: 100% !important;
+        background-size: 100% 100% !important;
+      }
+
+      /* EXPAND CONTAINER ONLY WHEN FORM IS OPEN */
+      .ready-section.form-active {
+        min-height: 320px !important;
+      }
+
+      .ready-section.form-active .ready-img {
+        min-height: 320px !important;
+        opacity: 0 !important;
+      }
+
+      .form-field {
+        font-size: 11px !important;
+        padding-left: 34px !important;
+        padding-right: 10px !important;
+      }
+
+      .input-name {
+        top: 19.5% !important;
+        height: 10% !important;
+      }
+
+      .input-email {
+        top: 33.8% !important;
+        height: 10% !important;
+      }
+
+      .input-subject {
+        top: 47.8% !important;
+        height: 10% !important;
+      }
+
+      .input-message {
+        top: 63.5% !important;
+        height: 18% !important;
+        padding-top: 4px !important;
+        padding-left: 34px !important;
+      }
+
+      .send-btn-hotspot {
+        top: 87.5% !important;
+        height: 9.5% !important;
+      }
+    }
+  </style>
+</head>
+<body id="top">
+
+  <div class="master-canvas">
+
+    <header class="site-header">
+      <div class="nav-container">
+        <img src="images/PAGE 2/page 2 header text.png" alt="GEA OIL TRADING DMCC" class="header-logo-text" data-aos="fade-right">
+        
+        <nav class="desktop-nav">
+          <a href="index.html">Home</a>
+          <a href="index.html#about">About Us</a>
+          <a href="#services">Services</a>
+          <a href="#products">Product</a>
+          <a href="#ready" class="getInTouchBtn">Contact Us</a>
+        </nav>
+
+        <button class="hamburger" id="hamburgerBtn" aria-label="Toggle Navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <div class="mobile-nav-drawer" id="mobileDrawer">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About Us</a>
+        <a href="#services">Services</a>
+        <a href="#products">Product</a>
+        <a href="#ready" class="getInTouchBtn">Contact Us</a>
+      </div>
+    </header>
+
+    <section class="hero-section" id="hero">
+      <div class="hero-text-wrapper">
+        <img src="images/PAGE 2/GEA OIL hero text 1.png" alt="GEA OIL TRADING DMCC" class="hero-text-1" data-aos="zoom-in" data-aos-delay="100">
+        <img src="images/PAGE 2/GEA OIL hero text 2.png" alt="Petroleum Products Trading" class="hero-text-2" data-aos="fade-up" data-aos-delay="200">
+      </div>
+      <img src="images/PAGE 2/GEA OIL black box with text with white background.png" alt="Company Statement" class="hero-black-box" data-aos="fade-up" data-aos-delay="300">
+    </section>
+
+    <section class="products-section" id="products">
+      <div class="products-container" data-aos="fade-up">
+        <img src="images/PAGE 2/GEA OIL our products text.png" class="prod-title-img" alt="Our Products" data-aos="fade-up">
+        <img src="images/PAGE 2/GEA OIL Crude Oil text on yellow box.png" class="prod-yellow-banner" alt="Crude Oil" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="products-grid">
+          <img src="images/PAGE 2/GEA OIL Diesel fuel.png" alt="EN590 Diesel Fuel" data-aos="fade-up" data-aos-delay="100">
+          <img src="images/PAGE 2/GEA OIL JET FUEL.png" alt="Jet Fuel" data-aos="fade-up" data-aos-delay="200">
+          <img src="images/PAGE 2/GEA OIL LNG.png" alt="LNG" data-aos="fade-up" data-aos-delay="300">
+          <img src="images/PAGE 2/GEA OIL ESPO.png" alt="ESPO Crude Oil" data-aos="fade-up" data-aos-delay="400">
+        </div>
+      </div>
+    </section>
+
+    <section class="why-choose-section">
+      <div class="why-choose-container">
+        
+        <div class="why-choose-left" data-aos="fade-right">
+          <img src="images/PAGE 2/GEA OIL why choose us text 1 box.png" alt="Why Choose Us Box" class="card-box-img">
+          <img src="images/PAGE 2/GEA OIL why choose us text 1.png" alt="Why Choose Us Text" class="card-text-overlay">
+        </div>
+
+        <div class="why-choose-right" id="whyChooseRight" data-aos="fade-left">
+          <img src="images/PAGE 2/GEA OIL why choose us text 2.png" alt="About Geo Oil Trading" id="whyChooseImg">
+          <a href="index.html#about" class="learn-more-hotspot" aria-label="Learn More About Us"></a>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="services" class="services-section">
+      <div class="container" data-aos="fade-up">
+        <div class="services-header">
+          <img src="images/PAGE 2/GEA OIL what we offer.png" alt="What We Offer" class="offer-img">
+          <img src="images/PAGE 2/GEA OIL our services Main text.png" alt="Our Services" class="services-title-img">
+        </div>
+        <div class="services-grid">
+          <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+            <img src="images/PAGE 2/GEA OIL shipping.png" alt="Shipping">
+          </div>
+          <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+            <img src="images/PAGE 2/GEA OIL Delivery.png" alt="Delivery">
+          </div>
+          <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+            <img src="images/PAGE 2/Storage.png" alt="Storage">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ready-section" id="ready" data-aos="fade-up">
+      <img class="ready-img" id="defaultReadyImg" src="images/GEA OIL are you ready.png" alt="Are you ready to trade with GEA Oil Trading DMCC" />
+      <button class="contact-hotspot" id="showFormBtn" aria-label="Get in touch"></button>
+      <a href="https://wa.me/971551712844" target="_blank" class="whatsapp-hotspot" aria-label="Chat with us on WhatsApp"></a>
+
+      <div class="form-container-overlay" id="formOverlay">
+        <form id="contactForm" action="https://formspree.io/f/xzeplaga" method="POST" class="interactive-form">
+          <input type="text" name="name" class="form-field input-name" required placeholder="Name" />
+          <input type="email" name="email" class="form-field input-email" required placeholder="Email Address" />
+          <input type="text" name="subject" class="form-field input-subject" required placeholder="Subject" />
+          <textarea name="message" class="form-field input-message" required placeholder="Message"></textarea>
+          <button type="submit" class="send-btn-hotspot" aria-label="Send Message"></button>
+        </form>
+      </div>
+    </section>
+
+    <section class="footer-section" id="contact" data-aos="fade-up">
+      <img class="footer-img" src="images/GEA OIL footer.png" alt="GEA Oil Trading DMCC Footer" />
+      <a href="#top" class="back-to-top-hotspot" aria-label="Scroll back to top"></a>
+    </section>
+
+  </div>
+
+  <script>
+    AOS.init({
+      duration: 800,
+      once: false,
+      mirror: true,
+      easing: 'ease-in-out'
+    });
+
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    const showFormBtn = document.getElementById('showFormBtn');
+    const formOverlay = document.getElementById('formOverlay');
+    const contactForm = document.getElementById('contactForm');
+    const readySection = document.getElementById('ready');
+
+    if (hamburgerBtn && mobileDrawer) {
+      hamburgerBtn.addEventListener('click', () => {
+        mobileDrawer.classList.toggle('active');
+      });
+
+      document.querySelectorAll('.mobile-nav-drawer a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileDrawer.classList.remove('active');
+        });
+      });
+    }
+
+    function openForm() {
+      if (formOverlay) {
+        formOverlay.style.backgroundImage = "url('images/SEND MESSAGE.png')";
+        if (contactForm) contactForm.style.display = 'block';
+        formOverlay.style.display = 'block';
+        if (readySection) readySection.classList.add('form-active');
+      }
+    }
+
+    if (showFormBtn) showFormBtn.addEventListener('click', openForm);
+
+    document.querySelectorAll('.getInTouchBtn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        openForm();
+        if (readySection) {
+          readySection.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(contactForm);
+        
+        const showThankYouState = () => {
+          if (contactForm) contactForm.style.display = 'none';
+          if (formOverlay) formOverlay.style.backgroundImage = "url('images/Thanks for contacting us.png')";
+
+          contactForm.reset();
+
+          setTimeout(() => {
+            if (formOverlay) formOverlay.style.display = 'none';
+            if (contactForm) contactForm.style.display = 'block';
+            if (formOverlay) formOverlay.style.backgroundImage = "url('images/SEND MESSAGE.png')";
+            if (readySection) readySection.classList.remove('form-active');
+          }, 5000);
+        };
+
+        fetch('https://formspree.io/f/xzeplaga', {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        })
+        .then(() => showThankYouState())
+        .catch(() => showThankYouState());
+      });
+    }
+
+    // CHECK IF COMING FROM PAGE 1 VIA "GET IN TOUCH"
+    if (window.location.hash === '#ready') {
+      openForm();
+    }
+  </script>
+</body>
+</html>
