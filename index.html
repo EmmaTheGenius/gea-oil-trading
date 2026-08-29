@@ -21,7 +21,7 @@
       position: relative;
     }
 
-    /* HEADER HERO */
+    /* HEADER HERO (DESKTOP) */
     .header-hero {
       position: relative;
       width: 100%;
@@ -33,9 +33,10 @@
     .hero-background {
       display: block;
       width: 100%;
-      height: 100%;
+      height: auto;
+      overflow: visible;
       margin: 0;
-      object-fit: cover;
+      object-fit: contain;
     }
 
     .hero-images {
@@ -82,7 +83,7 @@
     .header-hero.is-visible .hero-text { animation: reveal-text 0.9s ease-out 0.4s both; }
     .header-hero.is-visible .hero-pumpjacks { animation: enter-from-left 0.9s ease-out 0.2s both; }
     .header-hero.is-visible .hero-refinery { animation: enter-from-bottom 0.9s ease-out 0.2s both; }
-    .header-hero.is-visible .hero-ship { animation: enter-from-right 0.9s ease-out 0.2s both; }
+    .header-hero.is-visible .hero-ship { animation: enter-from-right 0.9s ease-out 0.3s both; }
 
     @keyframes enter-from-left {
       from { opacity: 0; transform: translateX(-50px); }
@@ -99,6 +100,16 @@
     @keyframes reveal-text {
       from { opacity: 0; clip-path: inset(0 100% 0 0); }
       to { opacity: 1; clip-path: inset(0 0 0 0); }
+    }
+    @keyframes enter-from-top {
+      from { opacity: 0; transform: translateY(-40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* New Mobile Side Entry Keyframe */
+    @keyframes enter-from-left-mob {
+      from { opacity: 0; transform: translateX(-40px); }
+      to { opacity: 1; transform: translateX(0); }
     }
 
     /* NAVIGATION */
@@ -161,7 +172,7 @@
     .hamburger-btn.active span:nth-child(2) { opacity: 0; }
     .hamburger-btn.active span:nth-child(3) { transform: translateY(-4.25px) rotate(-45deg); }
 
-    /* ABOUT SECTION */
+    /* ABOUT SECTION (DESKTOP) */
     .about-section {
       position: relative;
       width: 100%;
@@ -177,10 +188,9 @@
       object-fit: cover;
     }
 
-    .about-title-art, .about-ceo-art, .about-platform-art { opacity: 0; }
+    .about-title-art, .about-ceo-art { opacity: 0; }
     .about-title-art { position: absolute; top: 6%; left: 43%; width: 14%; height: auto; }
     .about-ceo-art { position: absolute; top: 23%; left: 47%; width: 47%; height: auto; }
-    .about-platform-art { position: absolute; top: 70%; left: 10%; width: 24%; height: auto; }
 
     .about-year-wrap {
       position: absolute;
@@ -192,6 +202,7 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
+      opacity: 0;
     }
 
     .about-year {
@@ -211,9 +222,9 @@
 
     .about-section.is-visible .about-title-art { animation: reveal-text 0.8s ease-out both; }
     .about-section.is-visible .about-ceo-art { animation: enter-from-right 0.9s ease-out 0.2s both; }
-    .about-section.is-visible .about-platform-art { animation: enter-from-left 0.9s ease-out 0.3s both; }
+    .about-section.is-visible .about-year-wrap { animation: enter-from-bottom 0.8s ease-out 0.4s both; }
 
-    /* REFINERY SECTION */
+    /* REFINERY SECTION (DESKTOP) */
     .refinery-section {
       width: 100%;
       overflow: hidden;
@@ -226,7 +237,7 @@
     .refinery-section.is-visible { opacity: 1; transform: translateY(0); }
     .refinery-img { display: block; width: 100%; height: auto; }
 
-    /* ARE YOU READY SECTION */
+    /* ARE YOU READY SECTION (DESKTOP) */
     .ready-section {
       width: 100%;
       overflow: hidden;
@@ -238,12 +249,7 @@
     }
 
     .ready-section.is-visible { opacity: 1; transform: translateY(0); }
-
-    .ready-img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
+    .ready-img { display: block; width: 100%; height: auto; }
 
     .contact-hotspot {
       position: absolute;
@@ -267,7 +273,7 @@
       display: block;
     }
 
-    /* FOOTER SECTION */
+    /* FOOTER SECTION (DESKTOP) */
     .footer-section {
       width: 100%;
       overflow: hidden;
@@ -292,16 +298,184 @@
       display: block;
     }
 
-    /* MOBILE RESPONSIVE FIXES */
+    /* VISIBILITY TOGGLES */
+    .mobile-only { display: none !important; }
+    .desktop-only { display: block; }
+
+    /* MOBILE HERO SPECIFIC STYLING */
+    .mobile-hero {
+      position: relative;
+      width: 100%;
+      aspect-ratio: auto;
+    }
+    .mobile-hero .hero-background {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .mob-content-wrap {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .mob-welcome-text {
+      position: absolute;
+      top: 26.5%;
+      left: 15.5%;
+      width: 28%;
+      height: auto;
+      z-index: 4;
+      opacity: 0;
+    }
+    .mob-logo-text {
+      position: absolute;
+      top: 15%;
+      left: 10%;
+      width: 77.5%;
+      height: auto;
+      z-index: 3;
+      opacity: 0;
+    }
+    .mob-images-container {
+      position: absolute;
+      bottom: 8%;
+      left: 6%;
+      width: 88.5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 4%;
+      z-index: 3;
+    }
+    .mob-images-container img {
+      width: 48%;
+      height: auto;
+      display: block;
+      border-radius: 4px;
+      opacity: 0;
+    }
+
+    /* MOBILE ABOUT CONTAINER */
+    .mobile-about {
+      position: relative;
+      width: 100%;
+      background: #efefee;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      aspect-ratio: auto;
+    }
+
+    /* DARK GREEN HEADER BANNER */
+    .mob-about-header-wrapper {
+      position: relative;
+      width: 100%;
+      background: #003e3c;
+    }
+
+    .mob-about-header-wrapper .about-background {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /* MODIFICATION 1: About Us text made static */
+    .mob-about-header-text {
+      position: absolute;
+      top: 7%;
+      left: 38%;
+      width: 25%;
+      height: auto;
+      opacity: 1; /* Always visible */
+      z-index: 5;
+    }
+
+    .mob-year-wrap {
+      position: absolute;
+      top: 19%;
+      left: 36%;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #ffffff;
+      opacity: 0;
+      z-index: 6;
+    }
+
+    .mob-since-lbl {
+      font-family: Verdana, sans-serif;
+      font-size: 8px;
+      letter-spacing: 2px;
+      font-weight: 300;
+      color: #ffffff;
+    }
+
+    .mob-about-year {
+      font-family: Verdana, sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    /* MOBILE CEO MESSAGE SECTION */
+    .mob-ceo-container {
+      position: relative;
+      width: 100%;
+      background: #efefee;
+      overflow: hidden;
+      opacity: 0;
+    }
+
+    .mob-ceo-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+      z-index: 1;
+    }
+
+    .mob-ceo-msg-text {
+      position: relative;
+      display: block;
+      width: 85%;
+      max-width: 360px;
+      height: auto;
+      z-index: 5;
+      margin: 0 auto;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+
+    /* Mobile Animations */
+    .mobile-hero.is-visible .mob-welcome-text { animation: reveal-text 0.8s ease-out 0.1s both; }
+    .mobile-hero.is-visible .mob-logo-text { animation: reveal-text 0.9s ease-out 0.3s both; }
+    .mobile-hero.is-visible .mob-images-container img:nth-child(1) { animation: enter-from-left 0.9s ease-out 0.4s both; }
+    .mobile-hero.is-visible .mob-images-container img:nth-child(2) { animation: enter-from-right 0.9s ease-out 0.5s both; }
+
+    /* MODIFICATION 2: Removed mob-about-header-text animation */
+    /*.mobile-about.is-visible .mob-about-header-text { animation: enter-from-top 0.8s ease-out 0.1s both; }*/
+    
+    /* MODIFICATION 3: Count year block comes from side */
+    .mobile-about.is-visible .mob-year-wrap { animation: enter-from-left-mob 0.8s ease-out 0.4s both; }
+    .mobile-about.is-visible .mob-about-img { animation: enter-from-left 0.8s ease-out 0.5s both; }
+    
+    /* Message from CEO (Keep existing scroll-up) */
+    .mobile-about.is-visible .mob-ceo-container { animation: enter-from-bottom 0.8s ease-out 0.6s both; }
+
+    /* MEDIA QUERY FOR MOBILE */
     @media (max-width: 768px) {
+      .desktop-only { display: none !important; }
+      .mobile-only { display: block !important; }
+
       .nav-row {
         padding-top: 5%;
         padding-right: 5%;
       }
 
-      .hamburger-btn {
-        display: flex;
-      }
+      .hamburger-btn { display: flex; }
 
       .nav-row nav {
         display: none;
@@ -318,9 +492,7 @@
         min-width: 95px;
       }
 
-      .nav-row nav.active {
-        display: flex;
-      }
+      .nav-row nav.active { display: flex; }
 
       .nav-row a {
         font-size: 9px;
@@ -329,15 +501,36 @@
         border-bottom: 1px solid #f2f2f2;
       }
 
-      .nav-row a:last-child {
-        border-bottom: none;
+      .nav-row a:last-child { border-bottom: none; }
+
+      /* Mobile Hotspots */
+      #ready-mobile .contact-hotspot {
+        top: 40%;
+        left: 8%;
+        width: 30%;
+        height: 9%;
+      }
+
+      #ready-mobile .whatsapp-hotspot {
+        top: 40%;
+        left: 40%;
+        width: 44%;
+        height: 9%;
+      }
+
+      /* MODIFICATION 4: Mobile footer made static (Reset animations) */
+      .footer-section.mobile-only {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
       }
     }
   </style>
 </head>
 <body>
   <div class="page-shell">
-    <header class="header-hero" id="home" aria-label="GEA homepage hero section">
+    
+    <header class="header-hero desktop-only" id="home" aria-label="GEA homepage hero section">
       <div class="nav-row">
         <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle Navigation Menu">
           <span></span>
@@ -352,6 +545,7 @@
           <a href="services.html#ready">Contact Us</a>
         </nav>
       </div>
+
       <img class="hero-background" src="images/HERO ASSETS/Hero Welcome.png" alt="GEA welcome hero image" />
       <img class="hero-welcome" src="images/HERO ASSETS/Hero Welcome to.png" alt="Welcome to" />
       <img class="hero-text" src="images/HERO ASSETS/Hero Welcome text.png" alt="GEA Oil Trading DMCC" />
@@ -362,75 +556,144 @@
       </div>
     </header>
 
-    <section class="about-section" id="about" aria-label="About Us">
+    <header class="header-hero mobile-hero mobile-only" id="home-mobile" aria-label="GEA homepage mobile hero section">
+      <div class="nav-row">
+        <button class="hamburger-btn" id="hamburgerBtnMob" aria-label="Toggle Navigation Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav id="navMenuMob" aria-label="Main navigation mobile">
+          <a href="#home-mobile">Home</a>
+          <a href="#about-mobile">About Us</a>
+          <a href="mobile 2.html#services">Services</a>
+          <a href="mobile 2.html#products">Product</a>
+          <a href="mobile 2.html#ready">Contact Us</a>
+        </nav>
+      </div>
+
+      <img class="hero-background" src="images/MOBILE/GEA OIL mobile header background.png" alt="GEA Mobile Background" />
+      
+      <div class="mob-content-wrap">
+        <img class="mob-welcome-text" src="images/MOBILE/Mobile welcome.png" alt="Welcome to" />
+        <img class="mob-logo-text" src="images/MOBILE/GEA HEADER TEXT.png" alt="GEA Header Text" />
+        
+        <div class="mob-images-container">
+          <img src="images/MOBILE/Mobile header image 1.png" alt="Refinery pipelines" />
+          <img src="images/MOBILE/header image 2.png" alt="Cargo Ship" />
+        </div>
+      </div>
+    </header>
+
+    <section class="about-section desktop-only" id="about" aria-label="About Us">
       <img class="about-background" src="images/About us/Main Background.png" alt="" />
       <img class="about-title-art" src="images/About us/about us txt.png" alt="About Us" />
       <img class="about-ceo-art" src="images/About us/CEO MESSAGE.png" alt="About Us message from the CEO" />
-      <img class="about-platform-art" src="images/About us/OIL PLATFORM TEXT.png" alt="Our oil platform" />
       <div class="about-year-wrap">
         <span class="about-year" data-target="2023">0000</span>
         <img class="about-since" src="images/About us/SINCE.png" alt="Since" />
       </div>
     </section>
 
-    <section class="refinery-section">
+    <section class="about-section mobile-about mobile-only" id="about-mobile" aria-label="About Us Mobile">
+      <div class="mob-about-header-wrapper">
+        <img class="about-background" src="images/MOBILE/Mobile About us header.png" alt="GEA Mobile About Us Background" />
+        <img class="mob-about-header-text" src="images/MOBILE/Mobile About us header text.png" alt="About Us Text" />
+        
+        <div class="mob-year-wrap">
+          <span class="mob-since-lbl">SINCE</span>
+          <span class="mob-about-year" data-target="2023">0000</span>
+        </div>
+      </div>
+
+      <div class="mob-ceo-container">
+        <img class="mob-ceo-bg" src="images/MOBILE/Mobile Message from the Ceo Background.png" alt="CEO Message Background" />
+        <img class="mob-ceo-msg-text" src="images/MOBILE/Mobile Message from the Ceo Background text.png" alt="Message from the CEO" />
+      </div>
+    </section>
+
+    <section class="refinery-section desktop-only">
       <img class="refinery-img" src="images/refinery.png" alt="GEA Oil Trading Refinery" />
     </section>
 
-    <section class="ready-section" id="ready">
+    <section class="refinery-section mobile-only">
+      <img class="refinery-img" src="images/MOBILE/Mobile refinery.png" alt="GEA Oil Trading Mobile Refinery" />
+    </section>
+
+    <section class="ready-section desktop-only" id="ready">
       <img class="ready-img" src="images/GEA OIL are you ready.png" alt="Are you ready to trade with GEA Oil Trading DMCC" />
       <a href="services.html#ready" class="contact-hotspot" aria-label="Get in touch"></a>
       <a href="https://wa.me/971551712844" target="_blank" class="whatsapp-hotspot" aria-label="Chat with us on WhatsApp"></a>
     </section>
 
-    <section class="footer-section">
+    <section class="ready-section mobile-only" id="ready-mobile">
+      <img class="ready-img" src="images/MOBILE/Mobile Are you ready.png" alt="Are you ready to trade with GEA Oil Trading DMCC" />
+      <a href="mobile 2.html#ready" class="contact-hotspot" aria-label="Get in touch"></a>
+      <a href="https://wa.me/971551712844" target="_blank" class="whatsapp-hotspot" aria-label="Chat with us on WhatsApp"></a>
+    </section>
+
+    <section class="footer-section desktop-only">
       <img class="footer-img" src="images/GEA OIL footer.png" alt="GEA Oil Trading DMCC Footer" />
       <a href="#home" class="back-to-top-hotspot" aria-label="Scroll back to top"></a>
     </section>
+
+    <section class="footer-section mobile-only">
+      <img class="footer-img" src="images/MOBILE/Mobile footer.png" alt="GEA Oil Trading DMCC Mobile Footer" />
+      <a href="#home-mobile" class="back-to-top-hotspot" aria-label="Scroll back to top"></a>
+    </section>
+
   </div>
 
   <script>
-    /* HAMBURGER MENU */
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const navMenu = document.getElementById('navMenu');
-
-    if (hamburgerBtn && navMenu) {
-      hamburgerBtn.addEventListener('click', () => {
-        hamburgerBtn.classList.toggle('active');
-        navMenu.classList.toggle('active');
-      });
-
-      document.querySelectorAll('#navMenu a').forEach(link => {
-        link.addEventListener('click', () => {
-          hamburgerBtn.classList.remove('active');
-          navMenu.classList.remove('active');
+    const setupMenu = (btnId, menuId) => {
+      const btn = document.getElementById(btnId);
+      const menu = document.getElementById(menuId);
+      if (btn && menu) {
+        btn.addEventListener('click', () => {
+          btn.classList.toggle('active');
+          menu.classList.toggle('active');
         });
-      });
-    }
+        menu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            btn.classList.remove('active');
+            menu.classList.remove('active');
+          });
+        });
+      }
+    };
+    setupMenu('hamburgerBtn', 'navMenu');
+    setupMenu('hamburgerBtnMob', 'navMenuMob');
 
-    /* YEAR COUNTER ANIMATION */
-    const yearElement = document.querySelector('.about-year');
-    let yearAnimFrame = null;
+    let dtAnimFrame = null;
+    let mbAnimFrame = null;
 
-    const countYear = () => {
-      if (yearAnimFrame) cancelAnimationFrame(yearAnimFrame);
-      const targetYear = Number(yearElement.dataset.target);
+    const countYear = (el, isMob = false) => {
+      if (!el) return;
+      if (isMob && mbAnimFrame) cancelAnimationFrame(mbAnimFrame);
+      if (!isMob && dtAnimFrame) cancelAnimationFrame(dtAnimFrame);
+
+      const targetYear = Number(el.dataset.target);
       const duration = 1200;
       const startTime = performance.now();
 
       const updateYear = (currentTime) => {
         const progress = Math.min((currentTime - startTime) / duration, 1);
-        yearElement.textContent = String(Math.floor(progress * targetYear)).padStart(4, '0');
+        el.textContent = String(Math.floor(progress * targetYear)).padStart(4, '0');
         if (progress < 1) {
-          yearAnimFrame = requestAnimationFrame(updateYear);
+          if (isMob) mbAnimFrame = requestAnimationFrame(updateYear);
+          else dtAnimFrame = requestAnimationFrame(updateYear);
         }
       };
-      yearAnimFrame = requestAnimationFrame(updateYear);
+
+      if (isMob) mbAnimFrame = requestAnimationFrame(updateYear);
+      else dtAnimFrame = requestAnimationFrame(updateYear);
     };
 
-    const resetYear = () => {
-      if (yearAnimFrame) cancelAnimationFrame(yearAnimFrame);
-      yearElement.textContent = '0000';
+    const resetYear = (el, isMob = false) => {
+      if (!el) return;
+      if (isMob && mbAnimFrame) cancelAnimationFrame(mbAnimFrame);
+      if (!isMob && dtAnimFrame) cancelAnimationFrame(dtAnimFrame);
+      el.textContent = '0000';
     };
 
     const sectionObserver = new IntersectionObserver((entries) => {
@@ -438,16 +701,26 @@
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
           if (entry.target.classList.contains('about-section')) {
-            countYear();
+            const dtYear = entry.target.querySelector('.about-year');
+            const mbYear = entry.target.querySelector('.mob-about-year');
+            if (dtYear) countYear(dtYear, false);
+            if (mbYear) countYear(mbYear, true);
           }
         } else {
           entry.target.classList.remove('is-visible');
           if (entry.target.classList.contains('about-section')) {
-            resetYear();
+            const dtYear = entry.target.querySelector('.about-year');
+            const mbYear = entry.target.querySelector('.mob-about-year');
+            if (dtYear) resetYear(dtYear, false);
+            if (mbYear) resetYear(mbYear, true);
           }
         }
       });
-    }, { threshold: 0.15 });
+    }, { 
+      root: null,
+      rootMargin: '0px 0px -10% 0px',
+      threshold: 0.15 
+    });
 
     document.querySelectorAll('.header-hero, .about-section, .refinery-section, .ready-section, .footer-section').forEach((section) => {
       sectionObserver.observe(section);

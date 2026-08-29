@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GEA OIL TRADING DMCC - Services (Mobile)</title>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    /* SCROLL ANIMATION STYLES */
+    .anim-slide-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .anim-slide-top {
+      opacity: 0;
+      transform: translateY(-40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .anim-slide-bottom {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .anim-fade-in {
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    .anim-slide-left.visible,
+    .anim-slide-top.visible,
+    .anim-slide-bottom.visible {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+
+    .anim-fade-in.visible {
+      opacity: 1;
+    }
+
+    /* HEADER SECTION */
+    .site-header {
+      position: relative;
+      width: 100%;
+      background-image: url('images/MOBILE/page 2/page 2 Mobile header background.png');
+      background-size: 100% 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 16px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+    }
+
+    .header-logo-text {
+      width: 78%;
+      max-width: 320px;
+      height: auto;
+      display: block;
+    }
+
+    /* HAMBURGER MENU */
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 26px;
+      height: 15px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 101;
+      padding: 0;
+    }
+
+    .hamburger span {
+      width: 50%;
+      height: 1.5px;
+      background-color: #000;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* NAV DRAWER */
+    .mobile-nav-drawer {
+      display: none;
+      position: absolute;
+      top:5%;
+      left: 50%;
+      width: 50%;
+      background-color: #ffffff;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      flex-direction: column;
+      padding: 15px 0;
+      text-align: center;
+      z-index: 0;
+    }
+
+    .mobile-nav-drawer.active {
+      display: flex;
+    }
+
+    .mobile-nav-drawer a {
+      padding: 12px 0;
+      color: #000;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    /* HERO SECTION */
+    .hero-section {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .hero-bg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .hero-text-overlay {
+      position: absolute;
+      top: 8%;
+      width: 80%;
+      height: auto;
+      display: block;
+    }
+
+    /* GET IN TOUCH HOTSPOT */
+    .get-in-touch-overlay-btn {
+      position: absolute;
+      bottom: 6%;
+      left: 15%;
+      width: 70%;
+      height: 14%;
+      z-index: 10;
+      display: block;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* PRODUCTS SECTION */
+    .products-section {
+      position: relative;
+      width: 100%;
+      background-image: url('images/MOBILE/page 2/page 2 Mobile products background.png');
+      background-size: 100% 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 5% 40px 5%;
+    }
+
+    .products-text-img {
+      width: 85%;
+      max-width: 340px;
+      height: auto;
+      display: block;
+      margin-bottom: 25px;
+    }
+
+    .products-grid-img {
+      width: 85%;
+      max-width: 340px;
+      height: auto;
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    /* WHY CHOOSE US SECTION */
+    .why-choose-us-section {
+      position: relative;
+      width: 100%;
+      background-image: url('images/MOBILE/page 2/page 2 Mobile why choose us background.png');
+      background-size: 100% 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 35px 5%;
+    }
+
+    .why-choose-us-text-img {
+      width: 90%;
+      max-width: 360px;
+      height: auto;
+      display: block;
+    }
+
+    /* LEARN MORE ABOUT US HOTSPOT */
+    .learn-more-overlay-btn {
+      position: absolute;
+      bottom: 7%;
+      left: 20%;
+      width: 60%;
+      height: 7%;
+      z-index: 10;
+      display: block;
+      background-color: transparent;
+    }
+
+    /* OUR SERVICES SECTION */
+    .services-section {
+      position: relative;
+      width: 100%;
+      background-image: url('images/MOBILE/page 2/page 2 Mobile services.png');
+      background-size: 100% 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 5%;
+    }
+
+    .services-text1-img {
+      width: 50%;
+      max-width: 260px;
+      height: auto;
+      display: block;
+      margin-bottom: 30px;
+    }
+
+    .services-text2-img {
+      width: 68%;
+      max-width: 260px;
+      height: auto;
+      display: block;
+    }
+
+    /* KEY FEATURES / ARE YOU READY SECTION */
+    .ready-features-section {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #000;
+      line-height: 0;
+      overflow: hidden;
+    }
+
+    .ready-features-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: opacity 0.3s ease;
+    }
+
+    /* FORM OVERLAY & INTERACTIVE FIELDS */
+    .form-container-overlay {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 20;
+      background-image: url('images/MOBILE/page 2/Contact form.png');
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .interactive-form {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .form-field {
+      position: absolute;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-size: 12px;
+      color: #333;
+      padding-left: 38px;
+      padding-right: 12px;
+      font-family: Arial, sans-serif;
+    }
+
+    .form-field::placeholder {
+      color: #888888;
+      opacity: 0.7;
+      font-weight: 400;
+    }
+
+    .form-field:-webkit-autofill,
+    .form-field:-webkit-autofill:hover, 
+    .form-field:-webkit-autofill:focus,
+    .form-field:-webkit-autofill:active {
+      -webkit-text-fill-color: #333 !important;
+      -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+      transition: background-color 50000s ease-in-out 0s !important;
+      background-color: transparent !important;
+    }
+
+    .input-name { top: 19.5%; left: 8%; width: 84%; height: 10%; }
+    .input-email { top: 33.8%; left: 8%; width: 84%; height: 10%; }
+    .input-subject { top: 47.8%; left: 8%; width: 84%; height: 10%; }
+    .input-message { top: 63.5%; left: 8%; width: 84%; height: 18%; padding-top: 6px; padding-left: 38px; resize: none; }
+    .send-btn-hotspot { position: absolute; top: 87.5%; left: 18%; width: 64%; height: 9.5%; background: transparent; border: none; cursor: pointer; }
+
+    /* HOTSPOTS ON READY SECTION */
+    .ready-contact-btn {
+      position: absolute;
+      top: 40%;
+      left: 8%;
+      width: 30%;
+      height: 9%;
+      z-index: 10;
+      display: block;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    .whatsapp-overlay-btn {
+      position: absolute;
+      top: 40%;
+      left: 40%;
+      width: 44%;
+      height: 9%;
+      z-index: 10;
+      display: block;
+      background: transparent;
+    }
+
+    /* FOOTER SECTION */
+    .footer-section {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #000;
+    }
+
+    .footer-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  </style>
+</head>
+<body id="top">
+
+  <!-- MOBILE HEADER -->
+  <header class="site-header">
+    <!-- Header Logo & Text: Side Entry -->
+    <img src="images/MOBILE/page 2/page 2 Mobile header background text.png" alt="GEA OIL TRADING DMCC" class="header-logo-text anim-slide-left">
+    
+    <button class="hamburger" id="hamburgerBtn" aria-label="Toggle Navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="mobile-nav-drawer" id="mobileDrawer">
+      <a href="index.html">Home</a>
+      <a href="index.html#ceo-message">About Us</a>
+      <a href="#services">Services</a>
+      <a href="#products">Product</a>
+      <a href="#ready" class="getInTouchBtn">Contact Us</a>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero-section">
+    <img src="images/MOBILE/page 2/page 2 Mobile hero background with black background.png" alt="Hero Background" class="hero-bg">
+    <!-- Hero Text Overlay: Top Down Entry -->
+    <img src="images/MOBILE/page 2/page 2 Mobile hero background text 1.png" alt="Petroleum Products Trading" class="hero-text-overlay anim-slide-top">
+    
+    <!-- GET IN TOUCH CLICKABLE OVERLAY LINK -->
+    <button class="get-in-touch-overlay-btn getInTouchBtn" aria-label="Get In Touch"></button>
+  </section>
+
+  <!-- PRODUCTS SECTION -->
+  <section class="products-section" id="products">
+    <!-- Products Title: Scroll Up -->
+    <img src="images/MOBILE/page 2/page 2 Mobile products text.png" alt="Our Products" class="products-text-img anim-slide-bottom">
+    <!-- Product 1 (Fuel): Comes from Top -->
+    <img src="images/MOBILE/page 2/page 2 Mobile products.png" alt="EN590 Diesel Fuel & Jet Fuel" class="products-grid-img anim-slide-top">
+    <!-- Product 2 (LNG): Comes from Bottom -->
+    <img src="images/MOBILE/page 2/page 2 Mobile products 2.png" alt="LNG & ESPO Crude Oil" class="products-grid-img anim-slide-bottom">
+  </section>
+
+  <!-- WHY CHOOSE US SECTION -->
+  <section class="why-choose-us-section" id="why-us">
+    <!-- Why Choose Us Text: Comes from Bottom Up -->
+    <img src="images/MOBILE/page 2/page 2 Mobile why choose us text.png" alt="Why Choose Us" class="why-choose-us-text-img anim-slide-bottom">
+    
+    <!-- LEARN MORE ABOUT US CLICKABLE OVERLAY LINK -->
+    <a href="index.html#ceo-message" class="learn-more-overlay-btn" aria-label="Learn More About Us"></a>
+  </section>
+
+  <!-- OUR SERVICES SECTION -->
+  <section class="services-section" id="services">
+    <!-- What We Offer / Services Title: Static -->
+    <img src="images/MOBILE/page 2/page 2 Mobile services text 1.png" alt="What We Offer - Our Services" class="services-text1-img">
+    <!-- Services Items (Shipping etc.): Fade In -->
+    <img src="images/MOBILE/page 2/page 2 Mobile services text 2.png" alt="Shipping, Delivery, and Storage Services" class="services-text2-img anim-fade-in">
+  </section>
+
+  <!-- ARE YOU READY / KEY FEATURES / CONTACT FORM SECTION -->
+  <section class="ready-features-section" id="ready">
+    <!-- Are You Ready Section: Scroll in from Bottom -->
+    <img src="images/MOBILE/page 2/page 2 Are you ready slash key features section.png" alt="Are You Ready to Trade With Us & Key Features" class="ready-features-img anim-slide-bottom" id="readyBaseImg">
+    
+    <!-- TRIGGER FORM BUTTON -->
+    <button class="ready-contact-btn getInTouchBtn" aria-label="Get in touch"></button>
+
+    <!-- WHATSAPP CLICKABLE OVERLAY LINK -->
+    <a href="https://wa.me/971551712844" target="_blank" class="whatsapp-overlay-btn" aria-label="Chat on WhatsApp"></a>
+
+    <!-- INTERACTIVE FORMSPREE OVERLAY CONTAINER -->
+    <div class="form-container-overlay" id="formOverlay">
+      <form id="contactForm" action="https://formspree.io/f/xzeplaga" method="POST" class="interactive-form">
+        <input type="text" name="name" class="form-field input-name" required placeholder="Name" />
+        <input type="email" name="email" class="form-field input-email" required placeholder="Email Address" />
+        <input type="text" name="subject" class="form-field input-subject" required placeholder="Subject" />
+        <textarea name="message" class="form-field input-message" required placeholder="Message"></textarea>
+        <button type="submit" class="send-btn-hotspot" aria-label="Send Message"></button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER SECTION (Static) -->
+  <footer class="footer-section">
+    <img src="images/MOBILE/page 2/page 2 footer.png" alt="Contact Details & Footer" class="footer-img">
+  </footer>
+
+  <script>
+    // Intersection Observer for Animations
+    document.addEventListener("DOMContentLoaded", () => {
+      const animatedEls = document.querySelectorAll('.anim-slide-left, .anim-slide-top, .anim-slide-bottom, .anim-fade-in');
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.15
+      });
+
+      animatedEls.forEach(el => observer.observe(el));
+    });
+
+    // Hamburger Drawer Logic
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+
+    if (hamburgerBtn && mobileDrawer) {
+      hamburgerBtn.addEventListener('click', () => {
+        mobileDrawer.classList.toggle('active');
+      });
+
+      document.querySelectorAll('.mobile-nav-drawer a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileDrawer.classList.remove('active');
+        });
+      });
+    }
+
+    // Interactive Form Modal Logic
+    const formOverlay = document.getElementById('formOverlay');
+    const contactForm = document.getElementById('contactForm');
+    const readySection = document.getElementById('ready');
+
+    function openForm() {
+      if (formOverlay) {
+        formOverlay.style.backgroundImage = "url('images/MOBILE/page 2/Contact form.png')";
+        if (contactForm) contactForm.style.display = 'block';
+        formOverlay.style.display = 'block';
+      }
+    }
+
+    // Attach click event to all "Get In Touch" buttons
+    document.querySelectorAll('.getInTouchBtn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        openForm();
+        if (readySection) {
+          readySection.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Handle Formspree Submission via Fetch API
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(contactForm);
+        
+        const showThankYouState = () => {
+          if (contactForm) contactForm.style.display = 'none';
+          if (formOverlay) formOverlay.style.backgroundImage = "url('images/MOBILE/page 2/Contact form thank you response.png')";
+
+          contactForm.reset();
+
+          // Auto-hide thank you state after 5 seconds
+          setTimeout(() => {
+            if (formOverlay) formOverlay.style.display = 'none';
+            if (contactForm) contactForm.style.display = 'block';
+            if (formOverlay) formOverlay.style.backgroundImage = "url('images/MOBILE/page 2/Contact form.png')";
+          }, 5000);
+        };
+
+        fetch('https://formspree.io/f/xzeplaga', {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        })
+        .then(() => showThankYouState())
+        .catch(() => showThankYouState());
+      });
+    }
+
+    // Auto-open form if redirected from Page 1 with hash #ready or #contact
+    if (window.location.hash === '#ready' || window.location.hash === '#contact') {
+      openForm();
+      if (readySection) {
+        setTimeout(() => {
+          readySection.scrollIntoView({ behavior: 'smooth' });
+        }, 300);
+      }
+    }
+  </script>
+
+</body>
+</html>
